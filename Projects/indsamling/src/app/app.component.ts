@@ -30,4 +30,8 @@ export class AppComponent {
       done: false,
     });
   }
+
+  remove(item: { description: string; done: boolean }) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
+  }
 }
