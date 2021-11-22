@@ -35,6 +35,16 @@ label {
   font-size: 1rem;
 }
 
+.lg-select-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #000;
+  display: block;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
 .btn-wrapper {
   margin-bottom: 2rem;
 }

@@ -1,37 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import projects from '../assets/projects.json';
+import { Project } from './core/model/project';
+import organizers from '../assets/organizers';
+import { Organizer } from './core/model/organizer';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'Hestenet 2.0';
-  filter: 'all' | 'active' | 'done' = 'all';
-  allItems = [
-    { description: 'hest1', done: true },
-    { description: 'hest2', done: true },
-    { description: 'hest3', done: true },
-  ];
+export class AppComponent implements OnInit {
+  title: string;
+  filter: string;
+  projects: Project[];
+  organizers: Organizer[];
+  selectedOrganizer = new FormControl('all');
+  editable: boolean;
 
-  get items() {
-    if (this.filter === 'all') {
-      return this.allItems;
+  constructor() {
+    this.projects = projects;
+    this.organizers = organizers;
+    this.filter = 'all';
+    this.title = 'Indsamlingskalender';
+    this.editable = false;
+  }
+
+  ngOnInit() {
+    console.log('projects', this.projects);
+    console.log('organizers', this.organizers);
+  }
+
+  get filteredProjects() {
+    if (this.selectedOrganizer.value === 'all') {
+      return this.projects;
     }
-    return this.allItems.filter((item) =>
-      this.filter === 'done' ? item.done : !item.done
+    return this.projects.filter(
+      (item: Project) => this.selectedOrganizer.value === item.organizer && item
     );
   }
 
   addItem(description: string) {
-    console.log(description);
-    this.allItems.unshift({
+    this.projects.unshift({
+      id: 100,
+      title: 'none',
       description,
+      organizer: 'none',
       done: false,
     });
   }
 
-  remove(item: { description: string; done: boolean }) {
-    this.allItems.splice(this.allItems.indexOf(item), 1);
+  remove(item: Project) {
+    this.projects.splice(this.projects.indexOf(item), 1);
   }
 }

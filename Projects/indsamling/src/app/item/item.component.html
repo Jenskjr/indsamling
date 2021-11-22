@@ -1,13 +1,17 @@
 <div class="item">
+  <h3>{{ item.title }}</h3>
+  <h4>{{ item.organizer }}</h4>
+  <p>{{ item.description }}</p>
+
   <input
     [id]="item.description"
     type="checkbox"
     (change)="item.done = !item.done"
     [checked]="item.done"
   />
-  <label [for]="item.description">{{ item.description }}</label>
+  <label [for]="item.description">Deltager</label>
 
-  <div class="btn-wrapper" *ngIf="!editable">
+  <div *ngIf="editable" class="btn-wrapper">
     <button class="btn" (click)="editable = !editable">Edit</button>
     <button class="btn btn-warn" (click)="remove.emit()">Delete</button>
   </div>
@@ -22,7 +26,7 @@
       (keyup.enter)="saveItem(editedItem.value)"
     />
 
-    <div class="btn-wrapper">
+    <div *ngIf="editable" class="btn-wrapper">
       <button class="btn" (click)="editable = !editable">Cancel</button>
       <button class="btn btn-save" (click)="saveItem(editedItem.value)">
         Save
