@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
   filter: string;
   projects: Project[];
   organizers: Organizer[];
-  selectedOrganizer = new FormControl('all');
+  selectedOrganizer = new FormControl();
+  searchString = new FormControl();
   editable: boolean;
 
   constructor() {
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
     this.filter = 'all';
     this.title = 'Indsamlingskalender';
     this.editable = false;
+    this.selectedOrganizer.setValue('Alle');
+    this.searchString.setValue('');
   }
 
   ngOnInit() {
@@ -32,7 +35,26 @@ export class AppComponent implements OnInit {
   }
 
   get filteredProjects() {
-    if (this.selectedOrganizer.value === 'all') {
+    if (
+      this.searchString.value !== '' &&
+      this.selectedOrganizer.value !== 'Alle'
+    ) {
+      return this.projects.filter(
+        (item: Project) =>
+          item.title.includes(this.searchString.value) &&
+          this.selectedOrganizer.value === item.organizer &&
+          item
+      );
+    }
+    if (
+      this.searchString.value !== '' &&
+      this.selectedOrganizer.value === 'Alle'
+    ) {
+      return this.projects.filter(
+        (item: Project) => item.title.includes(this.searchString.value) && item
+      );
+    }
+    if (this.selectedOrganizer.value === 'Alle') {
       return this.projects;
     }
     return this.projects.filter(

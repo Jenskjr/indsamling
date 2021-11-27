@@ -12,7 +12,17 @@
     <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
   </div>
 
+  <input
+    class="lg-text-input"
+    type="text"
+    [formControl]="searchString"
+    placeholder="Søg"
+  />
+
   <select class="lg-select-input" [formControl]="selectedOrganizer">
+    <option [ngValue]="'Alle'" disabled selected hidden>
+      Vælg organisation ...
+    </option>
     <option *ngFor="let item of organizers" value="{{ item.name }}">
       {{ item.name }}
     </option>

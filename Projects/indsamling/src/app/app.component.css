@@ -33,6 +33,7 @@ label {
   display: block;
   box-sizing: border-box;
   font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 .lg-select-input {
