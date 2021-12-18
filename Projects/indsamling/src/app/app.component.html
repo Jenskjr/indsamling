@@ -1,72 +1,10 @@
 <div class="main">
   <h1>{{ title }}</h1>
-  <div *ngIf="editable">
-    <input
-      #newItem
-      class="lg-text-input"
-      id="addItem"
-      placeholder="add an item"
-      (keyup.enter)="addItem(newItem.value); newItem.value = ''"
-    />
-
-    <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+  <div class="nav-section">
+    <nav>
+      <a class="nav-button" routerLink="/">Indsamlinger</a>
+      <a class="nav-button" routerLink="/about">Om siden</a>
+    </nav>
   </div>
-
-  <input
-    class="lg-text-input"
-    type="text"
-    [formControl]="searchString"
-    placeholder="Søg"
-  />
-
-  <select class="lg-select-input" [formControl]="selectedOrganizer">
-    <option [ngValue]="'Alle'" disabled selected hidden>
-      Vælg organisation ...
-    </option>
-    <option *ngFor="let item of organizers" value="{{ item.name }}">
-      {{ item.name }}
-    </option>
-  </select>
-
-  <div class="btn-wrapper">
-    <button
-      class="btn btn-menu"
-      [class.active]="filter == 'all'"
-      (click)="filter = 'all'"
-    >
-      All
-    </button>
-
-    <button
-      class="btn btn-menu"
-      [class.active]="filter == 'active'"
-      (click)="filter = 'active'"
-    >
-      To Do
-    </button>
-
-    <button
-      class="btn btn-menu"
-      [class.active]="filter == 'done'"
-      (click)="filter = 'done'"
-    >
-      Done
-    </button>
-  </div>
-
-  <h2>
-    {{ filteredProjects.length }}
-    <span *ngIf="filteredProjects.length === 1; else elseBlock">item</span>
-    <ng-template #elseBlock>items</ng-template>
-  </h2>
-
-  <ul>
-    <li *ngFor="let item of filteredProjects">
-      <app-item
-        (remove)="remove(item)"
-        [item]="item"
-        [editable]="editable"
-      ></app-item>
-    </li>
-  </ul>
+  <router-outlet></router-outlet>
 </div>

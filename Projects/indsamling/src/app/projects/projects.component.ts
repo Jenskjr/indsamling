@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import projects from '../assets/projects.json';
-import { Project } from './core/model/project';
-import organizers from '../assets/organizers';
-import { Organizer } from './core/model/organizer';
 import { FormControl } from '@angular/forms';
+import { Organizer } from '../core/model/organizer';
+import { Project } from '../core/model/project';
+import projects from '../../assets/projects.json';
+import organizers from '../../assets/organizers';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.css'],
 })
-export class AppComponent implements OnInit {
+export class ProjectsComponent implements OnInit {
   currentPage = 1;
   title: string;
   filter: string;
@@ -47,12 +47,15 @@ export class AppComponent implements OnInit {
           item
       );
     }
+    // hvis alle er valgt
     if (
       this.searchString.value !== '' &&
       this.selectedOrganizer.value === 'Alle'
     ) {
       return this.projects.filter(
-        (item: Project) => item.title.includes(this.searchString.value) && item
+        (item: Project) =>
+          item.title.includes(this.searchString.value) ||
+          (item.organizer.includes(this.searchString.value) && item)
       );
     }
     if (this.selectedOrganizer.value === 'Alle') {

@@ -19,5 +19,26 @@
     "description": "Beskrivelse af ndsamling 3",
     "organizer": "Red barnet",
     "done": true
+  },
+  {
+    "id": 4,
+    "title": "Indsamling 4",
+    "description": "Beskrivelse af ndsamling 4",
+    "organizer": "Unicef",
+    "done": true
+  },
+  {
+    "id": 5,
+    "title": "Indsamling 5",
+    "description": "Beskrivelse af indsamling 5",
+    "organizer": "Kræftens bekæmpelse",
+    "done": true
+  },
+  {
+    "id": 6,
+    "title": "Indsamling 6",
+    "description": "Beskrivelse af indsamling 6",
+    "organizer": "Kræftens bekæmpelse",
+    "done": true
   }
 ]

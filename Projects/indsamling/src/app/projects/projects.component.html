@@ -1,0 +1,83 @@
+<div class="main">
+  <router-outlet></router-outlet>
+  <div *ngIf="editable">
+    <input
+      #newItem
+      class="lg-text-input"
+      id="addItem"
+      placeholder="add an item"
+      (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    />
+
+    <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+  </div>
+
+  <input
+    class="lg-text-input"
+    type="text"
+    [formControl]="searchString"
+    placeholder="Søg"
+  />
+
+  <select class="lg-select-input" [formControl]="selectedOrganizer">
+    <option [ngValue]="'Alle'" disabled selected hidden>
+      Vælg organisation ...
+    </option>
+    <option *ngFor="let item of organizers" value="{{ item.name }}">
+      {{ item.name }}
+    </option>
+  </select>
+
+  <!-- <div class="btn-wrapper">
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'all'"
+      (click)="filter = 'all'"
+    >
+      All
+    </button>
+
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'active'"
+      (click)="filter = 'active'"
+    >
+      To Do
+    </button>
+
+    <button
+      class="btn btn-menu"
+      [class.active]="filter == 'done'"
+      (click)="filter = 'done'"
+    >
+      Done
+    </button>
+  </div> -->
+
+  <h2>
+    {{ filteredProjects.length }}
+    <span *ngIf="filteredProjects.length === 1; else elseBlock">item</span>
+    <ng-template #elseBlock>items</ng-template>
+  </h2>
+
+  <!--content-->
+  <div>
+    <ul
+      *ngFor="
+        let item of filteredProjects
+          | paginate: { itemsPerPage: 5, currentPage: currentPage }
+      "
+      class="listMargin"
+    >
+      <app-item
+        (remove)="remove(item)"
+        [item]="item"
+        [editable]="editable"
+      ></app-item>
+    </ul>
+
+    <pagination-controls
+      (pageChange)="currentPage = $event"
+    ></pagination-controls>
+  </div>
+</div>

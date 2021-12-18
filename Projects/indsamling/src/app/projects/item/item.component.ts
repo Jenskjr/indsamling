@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Project } from '../core/model/project';
+import { Project } from '../../core/model/project';
 
 @Component({
   selector: 'app-item',
