@@ -3,14 +3,6 @@
   <h4>{{ item.organizer }}</h4>
   <p>{{ item.description }}</p>
 
-  <input
-    [id]="item.description"
-    type="checkbox"
-    (change)="item.done = !item.done"
-    [checked]="item.done"
-  />
-  <label [for]="item.description">Deltager</label>
-
   <div *ngIf="editable" class="btn-wrapper">
     <button class="btn" (click)="editable = !editable">Edit</button>
     <button class="btn btn-warn" (click)="remove.emit()">Delete</button>
