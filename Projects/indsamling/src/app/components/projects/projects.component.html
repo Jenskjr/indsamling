@@ -6,10 +6,10 @@
       class="lg-text-input"
       id="addItem"
       placeholder="add an item"
-      (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+      (keyup.enter)="addProject(newItem.value); newItem.value = ''"
     />
 
-    <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+    <button class="btn-primary" (click)="addProject(newItem.value)">Add</button>
   </div>
 
   <input
@@ -44,7 +44,7 @@
       class="listMargin"
     >
       <app-item
-        (remove)="remove(item)"
+        (remove)="removeProject(item)"
         [item]="item"
         [editable]="editable"
       ></app-item>

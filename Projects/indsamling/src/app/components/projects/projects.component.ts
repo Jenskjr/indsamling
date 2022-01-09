@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Organizer } from '../../core/model/organizer';
 import { Project } from '../../core/model/project';
-import projects from '../../../assets/projects';
-import organizers from '../../../assets/organizers';
 import { DataService } from '../../core/services/data.service';
 
 @Component({
@@ -77,23 +75,15 @@ export class ProjectsComponent implements OnInit {
     this.dataService.addProject(description);
   }
 
+  removeProject(project: Project) {
+    this.dataService.deleteProject(project);
+  }
+
   addOrganizer(description: string) {
     this.dataService.addOrganizer(description);
   }
 
-  // skal flyttes til dataService
-  addItem(description: string) {
-    this.projects.unshift({
-      id: 100,
-      title: 'none',
-      description,
-      organizer: 'none',
-      done: false,
-    });
-  }
-
-  // skal flyttes til dataService
-  remove(item: Project) {
-    this.projects.splice(this.projects.indexOf(item), 1);
+  removeOrganizer(organizer: Organizer) {
+    this.dataService.deleteOrganizer(organizer);
   }
 }

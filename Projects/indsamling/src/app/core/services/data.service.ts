@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Organizer } from '../model/organizer';
 import { Project } from '../model/project';
 import { catchError, map, tap } from 'rxjs';
+import projects from 'src/assets/projects';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class DataService {
     );
   }
 
+  // projects
   getProject(id: number): Observable<Project> {
     const url = `${this.projectsURL}/${id}`;
     return this.http.get<Project>(url).pipe(
@@ -29,6 +31,25 @@ export class DataService {
     );
   }
 
+  addProject(description: string): void {
+    console.log('item', description);
+    console.log('https://angular.io/tutorial/toh-pt6');
+  }
+
+  updateProject() {
+    console.log('https://angular.io/tutorial/toh-pt6');
+  }
+
+  deleteProject(project: Project): void {
+    console.log('remove item', project);
+    console.log('https://angular.io/tutorial/toh-pt6');
+  }
+
+  searchProject() {
+    console.log('https://angular.io/tutorial/toh-pt6');
+  }
+
+  //organizers
   getOrganizers(): Observable<Organizer[]> {
     return this.http.get<Organizer[]>(this.organizersURL);
   }
@@ -41,22 +62,15 @@ export class DataService {
     );
   }
 
-  addProject(description: string): void {
-    console.log('item', description);
-  }
-
   addOrganizer(description: string): void {
     console.log('item', description);
   }
 
-  removeProject(): void {
-    console.log('remove item');
+  deleteOrganizer(organizer: Organizer): void {
+    console.log('remove item', organizer);
   }
 
-  removeOrganizer(): void {
-    console.log('remove item');
-  }
-
+  // private methods
   private handleError<T>(operation: string, result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
