@@ -1,14 +1,16 @@
 <div class="header header-container">
-  <div class="header header-content">
-    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+  <div class="header header-content link" routerLink="/">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">{{
+      homeIcon
+    }}</mat-icon>
   </div>
-  <h1 class="header header-content">{{ title }}</h1>
-  <div class="header header-content">
+  <h1 class="header header-content link" routerLink="/">{{ title }}</h1>
+  <div class="header header-content" (click)="setSideNav()">
     <mat-icon
       *ngIf="!isDesktopScreen"
       aria-hidden="false"
       aria-label="Example thumbs up SVG icon"
-      >menu</mat-icon
+      >{{ menuIcon }}</mat-icon
     >
   </div>
 </div>

@@ -1,15 +1,26 @@
 <div class="item">
-  <h3>{{ item.title }}</h3>
-  <h4>{{ item.organizer }}</h4>
-  <p>{{ item.description }}</p>
-
-  <div *ngIf="editable" class="btn-wrapper">
-    <button class="btn" (click)="editable = !editable">Edit</button>
-    <button class="btn btn-warn" (click)="remove.emit()">Delete</button>
+  <div style="display: flex">
+    <div style="min-width: 400px; max-width: 30%; overflow: hidden">
+      <img src="{{ item.imageLink }}" alt="image" />
+    </div>
+    <div style="margin-left: 2rem">
+      <h2 [innerHTML]="item.title"></h2>
+      <p [innerHTML]="item.subtitle"></p>
+      <p>
+        <a href="{{ item.eventLink }}" target="_blank">{{ item.eventLink }}</a>
+      </p>
+      <p [innerHTML]="item.description"></p>
+      <p [innerHTML]="item.organizer"></p>
+    </div>
   </div>
 
+  <!-- <div *ngIf="editable" class="btn-wrapper">
+    <button class="btn" (click)="editable = !editable">Edit</button>
+    <button class="btn btn-warn" (click)="remove.emit()">Delete</button>
+  </div> -->
+
   <!-- This section shows only if user clicks Edit button -->
-  <div *ngIf="editable">
+  <!-- <div *ngIf="editable">
     <input
       class="sm-text-input"
       placeholder="edit item"
@@ -24,5 +35,7 @@
         Save
       </button>
     </div>
-  </div>
+  </div> -->
 </div>
+
+{{ item.imageLink }}

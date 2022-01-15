@@ -1,16 +1,28 @@
 export default [
   {
     id: 1,
-    title: 'Indsamling 1',
-    description: 'Beskrivelse af indsamling 1',
-    organizer: 'Røde kors',
-    done: true,
+    title: 'Danmarks Indsamling 2022: hjælp coronakrisens børn',
+    description:
+      '<p>Coronapandemien har forandret vores verden. I Danmark må vi leve med afstand og nye restriktioner, og epidemien gør hverdagen svær for mange. Men i verdens fattigste lande er situationen langt mere katastrofal, og hvor nøden før var stor, er den nu ekstrem.</p><p>Konsekvenserne rammer alle, men det er børnene, der risikerer at blive de største ofre. Millioner er lige nu sat udenfor skolesystemet, og deres håb om en bedre fremtid forsvinder langsomt, mens fattigdommen vokser og sulten tager over. Risikoen for en barndom med børnearbejde eller&nbsp;som barnebrud er overhængende.</p><p>Med udviklingsprojekter i 12 lande, giver Danmarks Indsamling børnene nyt håb og nye muligheder på trods af corona. Vi hjælper dér, hvor nøden er størst. Vi sikrer, at børnene får adgang til rent drikkevand; at de får uddannelse og beskyttelse; at der er en læge, der kan hjælpe, og en voksen, der kan give dem den omsorg, de har brug for.</p><p>Vi gør det, fordi vi er et lille land med et stort hjerte. Vi gør det nu, fordi coronakrisens børn har akut brug for vores hjælp. Og vi gør det sammen, fordi ingen kan gøre det alene.</p><p>Se med, når hele Danmark samler ind i den gode sags tjeneste lørdag d. 29. januar på DR1.</p>',
+    organizer: [
+      'Folkekirkens nødhjælp',
+      'Unicef',
+      'SOS Børnebyerne',
+      'Røde kors',
+      'Red barnet',
+      'Mellemfolkeligt samvirke',
+      'Læger uden grænser',
+      'Oxfarm IBIS',
+      'Dansk flygtningehjælp',
+    ],
+    eventLink: 'https://danmarksindsamling.dk/',
+    imageLink: './assets/images/DanmarksIndsamling2022.PNG',
   },
   {
     id: 2,
     title: 'Indsamling 2',
     description: 'Beskrivelse af indsamling 2',
-    organizer: 'Røde kors',
+    organizer: ['Røde kors'],
     done: true,
   },
   {

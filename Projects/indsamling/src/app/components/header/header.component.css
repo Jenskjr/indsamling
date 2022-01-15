@@ -1,6 +1,9 @@
 .header-container {
   display: flex;
   justify-content: space-between;
+  color: grey;
+  border-bottom: 1px solid red;
+  padding-bottom: 1rem;
 }
 
 .header-content {

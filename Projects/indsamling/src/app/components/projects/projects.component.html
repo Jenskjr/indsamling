@@ -12,46 +12,52 @@
     <button class="btn-primary" (click)="addProject(newItem.value)">Add</button>
   </div>
 
-  <input
-    class="lg-text-input"
-    type="text"
-    [formControl]="searchString"
-    placeholder="Søg"
-  />
+  <ng-container class="filter">
+    <input
+      class="text-input"
+      type="text"
+      [formControl]="searchString"
+      placeholder="Søg"
+    />
 
-  <select class="lg-select-input" [formControl]="selectedOrganizer">
-    <option [ngValue]="'Alle'" disabled selected hidden>
-      Vælg organisation ...
-    </option>
-    <option *ngFor="let item of organizers" value="{{ item.name }}">
-      {{ item.name }}
-    </option>
-  </select>
+    <select class="select-input" [formControl]="selectedOrganizer">
+      <option [ngValue]="'Alle'" disabled selected hidden>
+        Vælg organisation ...
+      </option>
+      <option *ngFor="let item of organizers" value="{{ item.name }}">
+        {{ item.name }}
+      </option>
+    </select>
+  </ng-container>
 
-  <h2>
-    {{ filteredProjects.length }}
-    <span *ngIf="filteredProjects.length === 1; else elseBlock">item</span>
-    <ng-template #elseBlock>items</ng-template>
-  </h2>
+  <ng-container class="result">
+    <h2 style="border-bottom: 1px solid red; padding-bottom: 1rem">
+      Vi fandt
+      {{ filteredProjects.length }}
+      <span *ngIf="filteredProjects.length === 1; else elseBlock"
+        >indsamling</span
+      >
+      <ng-template #elseBlock>indsamlinger</ng-template>
+    </h2>
 
-  <!--content-->
-  <div>
-    <ul
-      *ngFor="
-        let item of filteredProjects
-          | paginate: { itemsPerPage: 5, currentPage: currentPage }
-      "
-      class="listMargin"
-    >
-      <app-item
-        (remove)="removeProject(item)"
-        [item]="item"
-        [editable]="editable"
-      ></app-item>
-    </ul>
+    <div>
+      <ul
+        *ngFor="
+          let item of filteredProjects
+            | paginate: { itemsPerPage: 5, currentPage: currentPage }
+        "
+        class="listMargin"
+      >
+        <app-item
+          (remove)="removeProject(item)"
+          [item]="item"
+          [editable]="editable"
+        ></app-item>
+      </ul>
 
-    <pagination-controls
-      (pageChange)="currentPage = $event"
-    ></pagination-controls>
-  </div>
+      <pagination-controls
+        (pageChange)="currentPage = $event"
+      ></pagination-controls>
+    </div>
+  </ng-container>
 </div>

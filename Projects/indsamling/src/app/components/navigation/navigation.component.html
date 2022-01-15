@@ -1,6 +1,27 @@
-<div *ngIf="isDesktopScreen" class="nav-section">
+<div *ngIf="isDesktopScreen === true">
+  <nav class="nav-section">
+    <div class="nav-button" routerLink="/">Indsamlinger</div>
+    <div class="nav-button" routerLink="/about">Om siden</div>
+  </nav>
+</div>
+<div *ngIf="!isDesktopScreen && getIsSideNavigation()" class="side-nav-section">
   <nav>
-    <a class="nav-button" routerLink="/">Indsamlinger</a>
-    <a class="nav-button" routerLink="/about">Om siden</a>
+    <div class="side-nav-button" routerLink="/" (click)="setIsSideNavigation()">
+      Login
+    </div>
+    <div
+      class="side-nav-button"
+      routerLink="/projects"
+      (click)="setIsSideNavigation()"
+    >
+      Indsamlinger
+    </div>
+    <div
+      class="side-nav-button"
+      routerLink="/about"
+      (click)="setIsSideNavigation()"
+    >
+      Om siden
+    </div>
   </nav>
 </div>

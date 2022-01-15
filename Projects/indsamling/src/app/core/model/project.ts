@@ -1,7 +1,9 @@
 export interface Project {
   id: number;
   title: string;
+  subtitle?: string;
   description: string;
   organizer: string;
-  done: boolean;
+  eventLink: string;
+  imageLink: string;
 }

@@ -1,5 +1,8 @@
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: grey }
+.main {
+  padding: 1rem;
+}
 
 /* Angular material:
 XSmall	(max-width: 599.98px)
@@ -29,6 +32,13 @@ XLarge	(min-width: 1920px)
 @media only screen and (min-width: 1200px) {
 }
 
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: grey;
+}
 
 .btn-wrapper {
   /* flexbox */
