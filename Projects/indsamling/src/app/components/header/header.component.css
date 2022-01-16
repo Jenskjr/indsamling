@@ -1,11 +1,34 @@
+.header {
+  border-bottom: 1px solid lightcoral;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
   color: grey;
-  border-bottom: 1px solid red;
-  padding-bottom: 1rem;
+  padding: 0 1rem 0.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto
 }
 
 .header-content {
-  margin: 0 1rem;
+}
+
+.icon {
+  /* margin-left: 1rem; */
+}
+
+.icon-desktop {}
+
+.icon-mobile {
+
+}
+
+.icon-button {
+  cursor: pointer;
+  width: 2rem;
+}
+
+mat-icon {
+  font-size: 2rem;
 }

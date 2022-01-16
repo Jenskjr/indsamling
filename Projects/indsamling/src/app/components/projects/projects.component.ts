@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Organizer } from '../../core/model/organizer';
 import { Project } from '../../core/model/project';
 import { DataService } from '../../core/services/data.service';
+import { SharingService } from 'src/app/core/services/sharing.service';
 
 @Component({
   selector: 'app-projects',
@@ -18,7 +19,10 @@ export class ProjectsComponent implements OnInit {
   searchString = new FormControl();
   editable: boolean;
 
-  constructor(private dataService: DataService) {
+  constructor(
+    private dataService: DataService,
+    private sharingService: SharingService
+  ) {
     this.filter = 'all';
     this.editable = false;
     this.selectedOrganizer.setValue('Alle');
@@ -69,6 +73,10 @@ export class ProjectsComponent implements OnInit {
     return this.projects.filter(
       (item: Project) => this.selectedOrganizer.value === item.organizer && item
     );
+  }
+
+  getIsFilter() {
+    return this.sharingService.getIsFilter();
   }
 
   addProject(description: string) {

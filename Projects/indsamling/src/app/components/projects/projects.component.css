@@ -23,26 +23,4 @@ label {
   margin-bottom: 2rem;
 }
 
-.btn-wrapper {
-  margin-bottom: 2rem;
-}
-
-.btn-menu {
-  flex-basis: 32%;
-}
-
-.active {
-  color: green;
-}
-
-ul {
-  padding-inline-start: 0;
-}
-
- ul li {
-    list-style: none;
-}
-
-.listMargin{
-  margin : 5px;
-}
+ul {margin: 0; padding: 0}

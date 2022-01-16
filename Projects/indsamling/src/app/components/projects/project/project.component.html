@@ -1,0 +1,33 @@
+<div *ngIf="getIsDesktopScreen()" class="project project-desktop">
+  <div style="display: flex">
+    <div class="image image-desktop">
+      <h2 class="date-desktop" innerHTML="{{ item.date }}"></h2>
+      <img src="{{ item.imageLink }}" alt="image" />
+    </div>
+    <div class="text-content text-content-mobile" style="margin-left: 2rem">
+      <h2 [innerHTML]="item.title"></h2>
+      <p [innerHTML]="item.subtitle"></p>
+      <p>
+        <a href="{{ item.eventLink }}" target="_blank">{{ item.eventLink }}</a>
+      </p>
+      <p [innerHTML]="item.description"></p>
+      <p [innerHTML]="item.organizer"></p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!getIsDesktopScreen()" class="project project-mobile">
+  <div class="image image-mobile">
+    <img src="{{ item.imageLink }}" alt="image" />
+  </div>
+  <div class="text-content text-content-mobile">
+    <h2 class="date date-mobile" innerHTML="{{ item.date }}"></h2>
+    <h2 [innerHTML]="item.title"></h2>
+    <p [innerHTML]="item.subtitle"></p>
+    <p>
+      <a href="{{ item.eventLink }}" target="_blank">{{ item.eventLink }}</a>
+    </p>
+    <p [innerHTML]="item.description"></p>
+    <p [innerHTML]="item.organizer"></p>
+  </div>
+</div>

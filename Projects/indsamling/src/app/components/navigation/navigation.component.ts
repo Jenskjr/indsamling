@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
 import { SharingService } from 'src/app/core/services/sharing.service';
 
 @Component({
@@ -7,16 +6,9 @@ import { SharingService } from 'src/app/core/services/sharing.service';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
   isDesktopScreen = false;
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private sharingService: SharingService
-  ) {}
-
-  ngOnInit(): void {
-    this.isDesktopScreen = this.breakpointObserver.isMatched(Breakpoints.Large);
-  }
+  constructor(private sharingService: SharingService) {}
 
   setIsSideNavigation() {
     this.sharingService.setIsSideNavigation();
@@ -24,5 +16,9 @@ export class NavigationComponent implements OnInit {
 
   getIsSideNavigation() {
     return this.sharingService.getIsSideNavigation();
+  }
+
+  getIsDesktopScreen() {
+    return this.sharingService.getIsDesktop();
   }
 }

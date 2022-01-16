@@ -11,14 +11,14 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { ItemComponent } from './components/projects/project/item.component';
+import { ProjectComponent } from './components/projects/project/project.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { InMemoryDataService } from './core/services/in-memory-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemComponent,
+    ProjectComponent,
     AboutComponent,
     ProjectsComponent,
     HeaderComponent,

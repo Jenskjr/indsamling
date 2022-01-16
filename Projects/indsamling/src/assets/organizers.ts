@@ -3,5 +3,6 @@ export default [
   { id: 2, name: 'Red barnet' },
   { id: 3, name: 'Unicef' },
   { id: 4, name: 'Kræftens bekæmpelse' },
+  { id: 5, name: 'Folkekirkens nødhjælp' },
   { id: 5, name: 'Alle' },
 ];

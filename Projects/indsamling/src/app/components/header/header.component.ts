@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { SharingService } from 'src/app/core/services/sharing.service';
 
 @Component({
@@ -11,22 +10,28 @@ export class HeaderComponent implements OnInit {
   title: string;
   homeIcon = 'home';
   menuIcon = 'menu';
+  searchIcon = 'search';
   sideMenu = false;
   isDesktopScreen = false;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private sharingService: SharingService
-  ) {
+  constructor(private sharingService: SharingService) {
     this.title = 'Indsamlingskalender';
   }
 
   ngOnInit(): void {
-    this.isDesktopScreen = this.breakpointObserver.isMatched(Breakpoints.Large);
+    this.isDesktopScreen = this.sharingService.getIsDesktop();
+    console.log(this.isDesktopScreen);
   }
 
-  // kan laves som en sharing servie
-  setSideNav() {
+  setIsSideNavigation() {
     this.sharingService.setIsSideNavigation();
+  }
+
+  setIsFilter() {
+    this.sharingService.setIsFilter();
+  }
+
+  getIsDesktopScreen() {
+    return this.sharingService.getIsDesktop();
   }
 }

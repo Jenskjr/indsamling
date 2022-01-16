@@ -1,63 +1,60 @@
-<div class="main">
-  <router-outlet></router-outlet>
-  <div *ngIf="editable">
-    <input
-      #newItem
-      class="lg-text-input"
-      id="addItem"
-      placeholder="add an item"
-      (keyup.enter)="addProject(newItem.value); newItem.value = ''"
-    />
+<router-outlet></router-outlet>
+<div *ngIf="editable">
+  <input
+    #newItem
+    class="lg-text-input"
+    id="addItem"
+    placeholder="add an item"
+    (keyup.enter)="addProject(newItem.value); newItem.value = ''"
+  />
 
-    <button class="btn-primary" (click)="addProject(newItem.value)">Add</button>
-  </div>
-
-  <ng-container class="filter">
-    <input
-      class="text-input"
-      type="text"
-      [formControl]="searchString"
-      placeholder="Søg"
-    />
-
-    <select class="select-input" [formControl]="selectedOrganizer">
-      <option [ngValue]="'Alle'" disabled selected hidden>
-        Vælg organisation ...
-      </option>
-      <option *ngFor="let item of organizers" value="{{ item.name }}">
-        {{ item.name }}
-      </option>
-    </select>
-  </ng-container>
-
-  <ng-container class="result">
-    <h2 style="border-bottom: 1px solid red; padding-bottom: 1rem">
-      Vi fandt
-      {{ filteredProjects.length }}
-      <span *ngIf="filteredProjects.length === 1; else elseBlock"
-        >indsamling</span
-      >
-      <ng-template #elseBlock>indsamlinger</ng-template>
-    </h2>
-
-    <div>
-      <ul
-        *ngFor="
-          let item of filteredProjects
-            | paginate: { itemsPerPage: 5, currentPage: currentPage }
-        "
-        class="listMargin"
-      >
-        <app-item
-          (remove)="removeProject(item)"
-          [item]="item"
-          [editable]="editable"
-        ></app-item>
-      </ul>
-
-      <pagination-controls
-        (pageChange)="currentPage = $event"
-      ></pagination-controls>
-    </div>
-  </ng-container>
+  <button class="btn-primary" (click)="addProject(newItem.value)">Add</button>
 </div>
+
+<div *ngIf="getIsFilter()" class="filter">
+  <input
+    class="text-input"
+    type="text"
+    [formControl]="searchString"
+    placeholder="Søg"
+  />
+
+  <select class="select-input" [formControl]="selectedOrganizer">
+    <option [ngValue]="'Alle'" disabled selected hidden>
+      Vælg organisation ...
+    </option>
+    <option *ngFor="let item of organizers" value="{{ item.name }}">
+      {{ item.name }}
+    </option>
+  </select>
+
+  <h2 style="border-bottom: 1px solid lightcoral; padding-bottom: 1rem">
+    Vi fandt
+    {{ filteredProjects.length }}
+    <span *ngIf="filteredProjects.length === 1; else elseBlock"
+      >indsamling</span
+    >
+    <ng-template #elseBlock>indsamlinger</ng-template>
+  </h2>
+</div>
+
+<ng-container class="result">
+  <div>
+    <ul
+      *ngFor="
+        let item of filteredProjects
+          | paginate: { itemsPerPage: 5, currentPage: currentPage }
+      "
+    >
+      <app-item
+        (remove)="removeProject(item)"
+        [item]="item"
+        [editable]="editable"
+      ></app-item>
+    </ul>
+
+    <pagination-controls
+      (pageChange)="currentPage = $event"
+    ></pagination-controls>
+  </div>
+</ng-container>

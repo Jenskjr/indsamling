@@ -1,16 +1,23 @@
-.nav-section {
+.navigation {
+  border-bottom: 1px solid lightcoral;
+  border-top: 1px solid lightcoral;
+}
+
+.navigation-container {
   display: flex;
-  padding: 1rem 0;
-  border-bottom: 1px solid red;
+  padding: 1rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .nav-button {
-  padding: 0 2rem;
+  margin-right: 1rem;
+  padding-right: 1rem;
   font-size: 1.2rem;
   cursor: pointer;
 }
 
-.side-nav-section {
+.side-navigation-containter {
   /* display: none; */
   position: fixed;
   z-index: 1;
@@ -28,5 +35,7 @@
 
 .side-nav-button {
   border-bottom: 1px solid lightgrey;
-  padding: 0.5rem 0;
+  padding: 1.5rem 0;
+  font-size: large;
+  cursor: pointer;
 }

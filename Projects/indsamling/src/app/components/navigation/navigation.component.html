@@ -1,10 +1,13 @@
-<div *ngIf="isDesktopScreen === true">
-  <nav class="nav-section">
+<div class="navigation" *ngIf="getIsDesktopScreen()">
+  <nav class="navigation-container nav-section">
     <div class="nav-button" routerLink="/">Indsamlinger</div>
     <div class="nav-button" routerLink="/about">Om siden</div>
   </nav>
 </div>
-<div *ngIf="!isDesktopScreen && getIsSideNavigation()" class="side-nav-section">
+<div
+  *ngIf="!getIsDesktopScreen() && getIsSideNavigation()"
+  class="side-navigation-container side-nav-section"
+>
   <nav>
     <div class="side-nav-button" routerLink="/" (click)="setIsSideNavigation()">
       Login
